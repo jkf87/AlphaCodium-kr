@@ -53,8 +53,8 @@ key = "..."
 ## 실행 방법
 
 ### 설정
-'alpha_codium/settings/configuration.toml` 파일에는 프로젝트에 대한 설정이 포함되어 있습니다.
-'config` 섹션에서 사용하려는 모델("gpt-4", "gpt-3.5-turbo-16k" 등)을 선택할 수 있습니다.
+`alpha_codium/settings/configuration.toml` 파일에는 프로젝트에 대한 설정이 포함되어 있습니다.
+`config` 섹션에서 사용하려는 모델("gpt-4", "gpt-3.5-turbo-16k" 등)을 선택할 수 있습니다.
 
 ### 특정 문제 해결
 AlphaCodium의 특정 문제를 해결하려면 루트 폴더에서
@@ -64,11 +64,11 @@ python -m alpha_codium.solve_problem \.
 --split_name test \
 --problem_number 0
 ```
-- 'dataset_name`은 설치 단계에서 다운로드한 데이터셋 폴더의 경로입니다.
+- `dataset_name`은 설치 단계에서 다운로드한 데이터셋 폴더의 경로입니다.
 - 유효성 검사 집합에는 117개의 문제가 포함되어 있고 테스트 집합에는 165개의 문제가 포함되어 있으므로 `problem_number` 매개 변수는 그에 따라 (0을 기준으로) 지정해야 합니다.
-- 'split_name`은 `valid` 또는 `test`일 수 있습니다.
+- `split_name`은 `valid` 또는 `test`일 수 있습니다.
 - 구성 파일의 다음 섹션은 다음과 같습니다:
-'solve`, `self_reflection`, `possible_solutions`, `generate_ai_tests`, `initial_code_generation`, `public_tests`, `ai_tests`
+`solve`, `self_reflection`, `possible_solutions`, `generate_ai_tests`, `initial_code_generation`, `public_tests`, `ai_tests`
 를 사용하여 흐름의 여러 단계에 대해 가능한 구성을 조정할 수 있습니다.
 - 각 실행은 결과를 `alpha_codium/example.log`라는 파일에 기록합니다. 로그 파일을 검토하면 흐름의 각 단계에서 무슨 일이 일어나고 있는지 파악할 수 있습니다.
 
