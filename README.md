@@ -90,11 +90,11 @@ python -m alpha_codium.solve_dataset \
 --database_solution_path /path/to/output/dir/dataset_output.jso
 ```
 
-- split_name`은 `valid` 또는 `test`일 수 있습니다.
-- 'database_solution_path`는 솔루션이 저장될 디렉터리 경로입니다.
+- `split_name`은 `valid` 또는 `test`일 수 있습니다.
+- `database_solution_path`는 솔루션이 저장될 디렉터리 경로입니다.
 - 구성 파일의 `dataset` 섹션에는 데이터셋의 실행 및 평가를 위한 구성이 포함되어 있습니다.
 - 이 과정은 시간이 오래 걸리며, 큰 모델(예: GPT-4)과 문제당 여러 번의 반복이 필요한 경우 완료하는 데 며칠이 걸릴 수 있습니다.
-- dataset.num_iterations`는 각 문제에 대한 반복 횟수를 정의합니다(pass@K). 반복 횟수가 많은 경우 최상의 결과를 얻으려면 각 반복에 대해 약간의 무작위성과 다양한 옵션을 도입하는 것이 좋습니다.
+- `dataset.num_iterations`는 각 문제에 대한 반복 횟수를 정의합니다(pass@K). 반복 횟수가 많은 경우 최상의 결과를 얻으려면 각 반복에 대해 약간의 무작위성과 다양한 옵션을 도입하는 것이 좋습니다.
 
 ### 평가 실행하기
 
