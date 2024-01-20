@@ -7,13 +7,13 @@
 > 탈 리드닉, 데디 크레도, 이타마르 프리드먼 <br/> CodiumAI
 
 ## 목차
-- 초록](#abstract)
+- [초록](#abstract)
 - [설치](#설치)
-- 실행 방법](#how-to-run)
-- 기술 Q&A](#technical-qa)
-- 폭넓은 적용 가능성](#broader-applicability)
+- [실행 방법](#how-to-run)
+- [기술 Q&A](#technical-qa)
+- [폭넓은 적용 가능성](#broader-applicability)
 - [감사](#감사)
-- 인용](#citation)
+- [인용](#citation)
 
 ## 초록
 
