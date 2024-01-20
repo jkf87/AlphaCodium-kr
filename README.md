@@ -40,7 +40,7 @@
 
 ## 설치
 
-(1) 가상 환경을 설정하고 실행합니다: 'pip install -r requirements.txt`를 실행합니다.
+(1) 가상 환경을 설정하고 실행합니다: `pip install -r requirements.txt`를 실행합니다.
 
 (2) `alpha_codium/settings/.secrets_template.toml` 파일을 복제하고 이름을 `.secrets.toml`로 변경한 후 openai API 키를 채웁니다:
 ```
