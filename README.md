@@ -40,7 +40,7 @@
 
 ## 설치
 
-(1) 가상 환경을 설정하고 실행합니다: pip install -r requirements.txt`를 실행합니다.
+(1) 가상 환경을 설정하고 실행합니다: 'pip install -r requirements.txt`를 실행합니다.
 
 (2) `alpha_codium/settings/.secrets_template.toml` 파일을 복제하고 이름을 `.secrets.toml`로 변경한 후 openai API 키를 채웁니다:
 ```
@@ -48,13 +48,13 @@
 key = "..."
 ```
 
-(3) 처리된 코드 콘테스트 검증 및 테스트 데이터셋을 [얼굴을 껴안다](https://huggingface.co/datasets/talrid/CodeContests_valid_and_test_AlphaCodium/blob/main/codecontests_valid_and_test_processed_alpha_codium.zip)에서 다운로드하여 압축을 푼 후, 압축을 푼 폴더를 프로젝트의 루트에 넣습니다.
+(3) 처리된 코드 콘테스트 검증 및 테스트 데이터셋을 [hugging face](https://huggingface.co/datasets/talrid/CodeContests_valid_and_test_AlphaCodium/blob/main/codecontests_valid_and_test_processed_alpha_codium.zip)에서 다운로드하여 압축을 푼 후, 압축을 푼 폴더를 프로젝트의 루트에 넣습니다.
 
 ## 실행 방법
 
 ### 설정
-파일 알파 나트륨/설정/설정.toml` 파일에는 프로젝트에 대한 설정이 포함되어 있습니다.
-config` 섹션에서 사용하려는 모델("gpt-4", "gpt-3.5-turbo-16k" 등)을 선택할 수 있습니다.
+'alpha_codium/settings/configuration.toml` 파일에는 프로젝트에 대한 설정이 포함되어 있습니다.
+'config` 섹션에서 사용하려는 모델("gpt-4", "gpt-3.5-turbo-16k" 등)을 선택할 수 있습니다.
 
 ### 특정 문제 해결
 AlphaCodium의 특정 문제를 해결하려면 루트 폴더에서
@@ -64,11 +64,11 @@ python -m alpha_codium.solve_problem \.
 --split_name test \
 --problem_number 0
 ```
-- 데이터셋_이름`은 설치 단계에서 다운로드한 데이터셋 폴더의 경로입니다.
+- 'dataset_name`은 설치 단계에서 다운로드한 데이터셋 폴더의 경로입니다.
 - 유효성 검사 집합에는 117개의 문제가 포함되어 있고 테스트 집합에는 165개의 문제가 포함되어 있으므로 `problem_number` 매개 변수는 그에 따라 (0을 기준으로) 지정해야 합니다.
-- split_name`은 `valid` 또는 `test`일 수 있습니다.
+- 'split_name`은 `valid` 또는 `test`일 수 있습니다.
 - 구성 파일의 다음 섹션은 다음과 같습니다:
-solve`, `self_reflection`, `possible_solutions`, `generate_ai_tests`, `initial_code_generation`, `public_tests`, `ai_tests`
+'solve`, `self_reflection`, `possible_solutions`, `generate_ai_tests`, `initial_code_generation`, `public_tests`, `ai_tests`
 를 사용하여 흐름의 여러 단계에 대해 가능한 구성을 조정할 수 있습니다.
 - 각 실행은 결과를 `alpha_codium/example.log`라는 파일에 기록합니다. 로그 파일을 검토하면 흐름의 각 단계에서 무슨 일이 일어나고 있는지 파악할 수 있습니다.
 
@@ -82,28 +82,28 @@ solve`, `self_reflection`, `possible_solutions`, `generate_ai_tests`, `initial_c
 </p>
 
 ### 전체 데이터 집합 풀기
-를 실행하여 루트 폴더에서 전체 데이터 집합을 AlphaCodium으로 해결합니다:
+AlphaCodium으로 전체 데이터 집합을 풀려면 루트 폴더에서 다음을 실행합니다.:
 ```
-python -m alpha_codium.solve_dataset \.
---dataset_name /path/to/dataset \.
+python -m alpha_codium.solve_dataset \
+--dataset_name /path/to/dataset \
 --split_name test
---데이터베이스_해결_경로 /경로/to/출력/출력/디알/데이터셋_출력.json
+--database_solution_path /path/to/output/dir/dataset_output.jso
 ```
 
 - split_name`은 `valid` 또는 `test`일 수 있습니다.
-- 데이터베이스_솔루션_경로`는 솔루션이 저장될 디렉터리 경로입니다.
-- 구성 파일의 `데이터셋` 섹션에는 데이터셋의 실행 및 평가를 위한 구성이 포함되어 있습니다.
+- 'database_solution_path`는 솔루션이 저장될 디렉터리 경로입니다.
+- 구성 파일의 `dataset` 섹션에는 데이터셋의 실행 및 평가를 위한 구성이 포함되어 있습니다.
 - 이 과정은 시간이 오래 걸리며, 큰 모델(예: GPT-4)과 문제당 여러 번의 반복이 필요한 경우 완료하는 데 며칠이 걸릴 수 있습니다.
-- 데이터셋.num_iterations`는 각 문제에 대한 반복 횟수를 정의합니다(pass@K). 반복 횟수가 많은 경우 최상의 결과를 얻으려면 각 반복에 대해 약간의 무작위성과 다양한 옵션을 도입하는 것이 좋습니다.
+- dataset.num_iterations`는 각 문제에 대한 반복 횟수를 정의합니다(pass@K). 반복 횟수가 많은 경우 최상의 결과를 얻으려면 각 반복에 대해 약간의 무작위성과 다양한 옵션을 도입하는 것이 좋습니다.
 
 ### 평가 실행하기
 
 전체 데이터 집합(유효 또는 테스트)에 대한 솔루션을 생성한 후에는 실행하여 평가할 수 있습니다:
 ```
-python -m alpha_codium.evaluate_dataset\.
---dataset_name /path/to/dataset\.
+python -m alpha_codium.evaluate_dataset\
+--dataset_name /path/to/dataset\
 --split_name test\
---데이터베이스_솔루션_경로 /경로/to/출력/디알/데이터셋_출력.json
+--database_solution_path /path/to/output/dir/dataset_output.json
 ```
 
 ## 기술 Q&A
@@ -140,11 +140,11 @@ ___
 무엇보다도, 제안된 AlphaCodium [flow](./pics/proposed_flow.png)를 적절히 조정하면 다른 코드 생성 작업을 위한 보다 일반적인 프레임워크로 사용할 수 있다고 생각합니다.
 
 둘째, 이 작업에서 얻은 많은 디자인 개념, 원칙, 요령은 일반적인 코드 생성 작업에 그대로 적용할 수 있습니다. 예를 들어
-- YAML 구조화된 출력**: 모델에 주어진 Pydantic 클래스에 해당하는 YAML 형식의 출력을 생성하도록 요청하기
-- 글머리 기호 분석을 통한 의미론적 추론**: 글머리 기호 분석을 통해 문제에 대한 심층적인 이해를 유도하고, 모델이 출력을 논리적인 의미론적 섹션으로 나누도록 하여 결과를 개선합니다.
-- 모듈식 코드를 생성할 때 더 효과적**: 모델에 다음과 같이 명확하게 요청할 때 더 효과적입니다: '생성된 코드를 의미 있는 이름과 기능을 가진 작은 하위 기능으로 나누라'고 명확하게 요청하면 버그가 적고 반복적인 수정 단계의 성공률이 높아지는 등 코드가 더 잘 생성되는 것을 관찰할 수 있습니다.
-- 이중 검증을 통한 신중한 의사 결정**: 이중 검증 프로세스를 통해 생성된 출력이 주어지면 모델에 동일한 출력을 다시 생성하되 필요한 경우 수정하도록 요청하는 추가 단계를 추가합니다.
-- 탐색의 여지 남겨두기**: 모델이 틀릴 수 있으므로 되돌릴 수 없는 결정을 피하고 다양한 가능한 솔루션으로 탐색 및 코드 반복을 할 수 있는 여지를 남겨두는 것이 좋습니다.
+- **YAML 구조화된 출력**: 모델에 주어진 Pydantic 클래스에 해당하는 YAML 형식의 출력을 생성하도록 요청하기
+- **글머리 기호 분석을 통한 의미론적 추론**: 글머리 기호 분석을 통해 문제에 대한 심층적인 이해를 유도하고, 모델이 출력을 논리적인 의미론적 섹션으로 나누도록 하여 결과를 개선합니다.
+- **모듈식 코드를 생성할 때 더 효과적**: 모델에 다음과 같이 명확하게 요청할 때 더 효과적입니다: '생성된 코드를 의미 있는 이름과 기능을 가진 작은 하위 기능으로 나누라'고 명확하게 요청하면 버그가 적고 반복적인 수정 단계의 성공률이 높아지는 등 코드가 더 잘 생성되는 것을 관찰할 수 있습니다.
+- **이중 검증을 통한 신중한 의사 결정**: 이중 검증 프로세스를 통해 생성된 출력이 주어지면 모델에 동일한 출력을 다시 생성하되 필요한 경우 수정하도록 요청하는 추가 단계를 추가합니다.
+- **탐색의 여지 남겨두기**: 모델이 틀릴 수 있으므로 되돌릴 수 없는 결정을 피하고 다양한 가능한 솔루션으로 탐색 및 코드 반복을 할 수 있는 여지를 남겨두는 것이 좋습니다.
 
 위의 목록은 일부입니다. 자세한 내용은 [논문](https://arxiv.org/abs/2401.08500)을 참조하세요. 이 리포지토리에 제공된 코드(./alpha_codium/settings)는 제안된 개념을 더 잘 이해하고 다른 코드 생성 작업에 적용하기 위한 참고 자료로 사용할 수 있습니다.
 
